@@ -31,3 +31,8 @@ form {
 nav ul li ul li a {
   display: inline;
 }
+
+.btnRemove{
+  display: inline;
+  width:10px;
+}
