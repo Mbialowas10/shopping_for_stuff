@@ -23,4 +23,12 @@ class CartController < ApplicationController
     flash[:notice] = "➖ #{product.name} removed from cart." # should be removed to line below
     redirect_to root_path
   end
+
+  # def remove_from_cart
+  #   product = Product.find(params[:id])
+  #   logger.debug("attemting to remove #{params[:id]} from cart.")
+  #   # Remove the product from the cart logic here
+  #   # ...
+  #   redirect_to cart_path, notice: 'Product removed from the cart successfully.'
+  # end
 end

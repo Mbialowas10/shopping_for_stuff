@@ -22,8 +22,9 @@
 				<ul>
 					<% cart.each do |product| %>
 						<li>
-							<%= product.name %> <%= link_to '➖', cart_path(product), method: :delete %>
-						</li>
+							<%= product.name %> <%# link_to '➖', cart_path(product), method: :delete %>
+               <%= button_to "❌", cart_path(product), method: :delete %>
+            </li>
 					<% end %>
 				</ul>
 			<% end %>
@@ -54,7 +55,9 @@
           <ul>
             <% cart.each do |product| %>
               <li>
-                <%= product.name %> <%= link_to '❌', cart_path(product), method: :delete %>
+                <%= product.name %> <%# link_to '❌', cart_path(product), method: :delete %>
+                <%= button_to "❌", cart_path(product), method: :delete %>
+
               </li>
             <% end %>
           </ul>
