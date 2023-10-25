@@ -12,7 +12,11 @@
   </head>
 
   <body>
-
+    <header>
+      <section>
+        <p>You have visited this page <%= pluralize visit_count, 'time' %> </p>
+      </section>
+    </header>
     <main>
       <%= yield %>
     </main>
