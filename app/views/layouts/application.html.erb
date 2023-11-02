@@ -14,7 +14,15 @@
   <body>
 
     <main>
-    <p>You have visited this page <%= pluralize visit_count, 'time' %></p>
+    <%= debug session[:shopping_cart] %>
+    <%= debug cart %>
+    <p>You have added <%= pluralize cart, 'product' %> to the shopping cart</p>
+      <% if flash[:notice] %>
+        <p>
+          <%= flash[:notice]%>
+        </p>
+      <% end %>
+
       <%= yield %>
     </main>
     <footer>
