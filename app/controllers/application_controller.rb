@@ -12,7 +12,4 @@ class ApplicationController < ActionController::Base
   def visit_count
     session[:visit_count]
   end
-
-  session[:visit_count] += 1
-  @visit_count = session[:visit_count]
 end
