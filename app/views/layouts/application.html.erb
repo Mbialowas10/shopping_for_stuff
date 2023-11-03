@@ -14,8 +14,16 @@
   <body>
 
     <main>
+    <%= debug cart %>
+    <hr>
+    <%= debug session[:shopping_cart]%>
+    <% if flash[:notice] %>
       <p>
-      You have visited this page <%= pluralize visit_count, 'time' %>
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+      <p>
+      You have added  <%= pluralize cart, 'time' %> to the cart ;)
     </p>
       <%= yield %>
     </main>
