@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <% #javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
 
   </head>
 
@@ -58,9 +58,6 @@
           <% cart.each do |p| %>
             <li>
               <%= p.name %><%= link_to 'x', cart_path(p), method: :delete %>
-              <%= button_to cart_path(p), method: :delete do %>
-                Remove from cart
-              <% end %>
             </li>
           <% end %>
         </ul>
