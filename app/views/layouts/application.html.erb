@@ -22,11 +22,53 @@
           <%= flash[:notice]%>
         </p>
       <% end %>
+      <nav>
 
+        <ul>
+          <li>
+            Cart
+              <% if cart.present? %>
+                <sup>
+                  <%= cart.size %>
+                  <ul>
+                    <% cart.each do | product |%>
+                      <li class="font-color">
+                        <%= product.name %><%= link_to '-', cart_path(product), method: :delete %>
+                      </li>
+                    <% end %>
+
+                  </ul>
+                </sup>
+              <% end %>
+          </li>
+        </ul>
+      </nav>
       <%= yield %>
     </main>
     <footer>
-
+      <details>
+          <summary>
+            Cart
+            <% if cart.present? %>
+            <ul>
+              <sup>
+                <%= cart.size %>
+              </sup>
+          </summary>
+          <% cart.each do |p| %>
+            <li>
+              <%= p.name %><%= link_to 'x', cart_path(p), method: :delete %>
+              <%= button_to cart_path(p), method: :delete do %>
+                Remove from cart
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <% else  %>
+          <p>No items in your cart. </p>
+        <% end %>
+      </details>
+      <hr>
 
       <p><span>🐐</span> Goats in Coats <span>🧥</span> - Copywrong <%= Time.current.year %></p>
     </footer>
