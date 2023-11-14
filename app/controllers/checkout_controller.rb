@@ -22,21 +22,31 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.create(
       # went to stripe API, looked up sessions, figured it all out..
       payment_method_types: ['card'],
+      mode: 'payment',
       success_url: checkout_success_url,
       cancel_url: checkout_cancel_url,
+
       line_items: [
         {
-          name: product.name,
-          description: product.description,
-          amount: product.price_cents,
-          currency: 'cad',
-          quantity: 1 # We will hardcode one for this demo.
+          price_data: {
+            currency: 'cad',
+            product_data: {
+              name: product.name,
+              description: product.description,
+            },
+            unit_amount: product.price_cents,
+          },
+          quantity: 1
         },
         {
-          name: 'GST',
-          description: 'Goods and Services Tax',
-          amount: (product.price_cents * 0.05).to_i,
-          currency: 'cad',
+          price_data: {
+            currency: 'cad',
+            product_data: {
+              name: 'GST',
+              description: 'Goods and Services Tax',
+            },
+            unit_amount: (product.price_cents * 0.05).to_i,
+          },
           quantity: 1
         }
       ]
