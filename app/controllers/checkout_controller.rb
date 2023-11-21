@@ -16,21 +16,28 @@ class CheckoutController < ApplicationController
       cancel_url: checkout_cancel_url,
       line_items: [
         {
-          name: product.name,
-          description: product.description,
-          amount: product.price_cents,
-          currency: 'cad',
-          quantity: 1
+        price_data: {
+        currency: 'cad',
+        product_data: {
+        name: product.name,
+        description: product.description
+        },
+        unit_amount: product.price_cents
+        },
+        quantity: 1
         },
         {
-          name: 'GST',
-          description: 'Good and Service Tax',
-          amount: (product.price_cents * 0.05).to_i,
-          currency: 'cad',
-          quantity: 1
+        price_data: {
+        currency: 'cad',
+        product_data: {
+        name: 'GST',
+        description: 'Goods and Services Tax'
+        },
+        unit_amount: (product.price_cents * 0.05).to_i
+        },
+        quantity: 1
         }
-
-      ]
+        ]
     )
     # establish conn to Stripe
     respond_to do |format|
