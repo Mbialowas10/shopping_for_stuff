@@ -7,16 +7,14 @@
 
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% # javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
       <h1>Buy Our Stuff</h1>
       <h3>Make Us Rich</h3>
-      <p>
-        You have visited this page <%= pluralize visit_count, 'time' %>
-      </p>
+
     </header>
     <main>
       <%= yield %>

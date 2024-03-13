@@ -1,4 +1,4 @@
-require "uri"
+require "URI"
 
 Product.delete_all
 
