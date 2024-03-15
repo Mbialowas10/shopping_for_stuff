@@ -17,6 +17,16 @@
 
     </header>
     <main>
+      <section>
+      <p>
+        <%= debug session[:shopping_cart]%>
+      </p>
+  </section>
+      <% if flash[:notice] %>
+        <p>
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
       <%= yield %>
     </main>
     <footer>
